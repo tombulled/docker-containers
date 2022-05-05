@@ -11,9 +11,8 @@ COPY --from=intermediate /CyberChef /CyberChef
 
 WORKDIR /CyberChef
 
-RUN npm install -g grunt-cli
 RUN npm install -g http-server
 RUN npm install
-RUN grunt prod
+RUN npm run build
 
-ENTRYPOINT ["http-server", "build/prod"]
+ENTRYPOINT ["http-server", "build/prod", "-p", "8080"]
